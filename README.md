@@ -1,101 +1,110 @@
-# ExSpace Extensions
+# ExSpace Extensions - Monorepo
 
-Repositório centralizado de recursos e extensões categorizadas por stack tecnológica.
+Repositório centralizado de extensões Gemini CLI. Fonte única de verdade para todas as extensões ExSpace.
 
-## 📚 Sobre
+## 🎯 Estratégia
 
-Este repositório contém extensões, ferramentas e recursos organizados por stack tecnológica, facilitando a descoberta e reutilização de extensões para diferentes plataformas e frameworks.
+Este repositório serve como **fonte única** para todas as extensões. Cada extensão é sincronizada automaticamente para seu próprio repositório privado no GitHub para instalação remota.
 
-## 🗂️ Estrutura
+## 📁 Estrutura
 
 ```
 exspace-extensions/
-├── gemini/              # Extensões para Gemini CLI
-│   ├── igniter-js/      # Extensão Igniter.js para Gemini CLI
+├── gemini/                    # Extensões Gemini CLI
+│   ├── igniter-js/           # Fonte da extensão
+│   ├── shadcn-ui/            # Fonte da extensão
 │   └── ...
-├── cursor/              # Extensões para Cursor IDE
-├── vscode/              # Extensões para VS Code
-├── claude/              # Extensões para Claude
-└── documentation/       # Documentação geral
+├── scripts/                    # Scripts de automação
+│   └── sync-to-private-repos.sh  # Sincronização automática
+└── README.md
 ```
 
-## 🚀 Stacks Disponíveis
+## 🔄 Fluxo de Trabalho
 
-### Gemini CLI (11 extensões)
-
-#### Frameworks & Runtimes
-- [Igniter.js](./gemini/igniter-js/) - Framework full-stack TypeScript
-- [Next.js](./gemini/nextjs/) - Framework React para produção
-- [Bun](./gemini/bun/) - Runtime JavaScript rápido
-- [TypeScript](./gemini/typescript/) - Type safety e análise
-
-#### UI & Components
-- [shadcn/ui](./gemini/shadcn-ui/) - Biblioteca de componentes React
-
-#### Database & ORM
-- [Prisma](./gemini/prisma/) - ORM de próxima geração
-- [PostgreSQL](./gemini/postgres/) - Ferramentas customizadas
-
-#### Testing
-- [Playwright](./gemini/playwright/) - Testes E2E e automação
-
-#### Deployment & Hosting
-- [Vercel](./gemini/vercel/) - Plataforma de deploy
-- [Hostinger](./gemini/hostinger/) - Gerenciamento de VPS
-- [Google Cloud](./gemini/gcloud/) - Ferramentas GCP
-
-### Cursor IDE
-- Em breve...
-
-### VS Code
-- Em breve...
-
-### Claude
-- Em breve...
-
-## 📖 Como Usar
-
-### Instalar Extensões Gemini CLI
+### 1. Desenvolver/Atualizar Extensão
 
 ```bash
-# Instalar extensão específica
-gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/[extension-name] --consent
-
-# Exemplos:
-gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/igniter-js --consent
-gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/shadcn-ui --consent
-gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/nextjs --consent
+cd /Users/exzosverse/Projects/exspace-extensions/gemini/igniter-js
+# ... fazer mudanças ...
+git add .
+git commit -m "Update igniter-js extension"
+git push  # Push para exspace-extensions
 ```
 
-Veja [gemini/README.md](./gemini/README.md) para lista completa de extensões.
+### 2. Sincronizar para Repositório Privado
 
-### Contribuir
+```bash
+# Sincronizar uma extensão específica
+./scripts/sync-to-private-repos.sh igniter-js
 
-1. Fork este repositório
-2. Crie uma branch para sua extensão
-3. Adicione sua extensão na pasta apropriada
-4. Atualize este README
-5. Abra um Pull Request
+# Sincronizar todas as extensões
+./scripts/sync-to-private-repos.sh --all
+```
 
-## 📝 Categorias
+### 3. Instalar/Atualizar no Gemini CLI
 
-As extensões são organizadas por:
-- **Stack**: Plataforma/Framework (Gemini, Cursor, VS Code, etc.)
-- **Tipo**: Tipo de extensão (MCP Server, CLI Tool, etc.)
-- **Framework**: Framework relacionado (Igniter.js, Next.js, etc.)
+```bash
+# Instalar via GitHub URL
+gemini extensions install https://github.com/exzosverse-space/igniter-js-gemini-extension --consent
 
-## 🔗 Links Úteis
+# Ou atualizar (desinstalar e reinstalar)
+gemini extensions uninstall igniter-js
+gemini extensions install https://github.com/exzosverse-space/igniter-js-gemini-extension --consent
+```
 
-- [Gemini CLI Extensions Gallery](https://geminicli.com/extensions/)
-- [Igniter.js Documentation](https://igniterjs.com)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
+## 📦 Extensões Disponíveis
 
-## 📄 Licença
+Todas as extensões são sincronizadas para repositórios privados:
 
-MIT License - veja [LICENSE](./LICENSE) para detalhes.
+- `igniter-js-gemini-extension`
+- `shadcn-ui-gemini-extension`
+- `nextjs-gemini-extension`
+- `prisma-gemini-extension`
+- `vercel-gemini-extension`
+- `typescript-gemini-extension`
+- `bun-gemini-extension`
+- `playwright-gemini-extension`
+- `postgres-gemini-extension`
+- `hostinger-gemini-extension`
+- `gcloud-gemini-extension`
+
+## 🔧 Scripts
+
+### sync-to-private-repos.sh
+
+Sincroniza extensões do monorepo para repositórios privados individuais.
+
+**Uso**:
+```bash
+# Sincronizar uma extensão
+./scripts/sync-to-private-repos.sh igniter-js
+
+# Sincronizar todas
+./scripts/sync-to-private-repos.sh --all
+```
+
+**O que faz**:
+1. Clona o repositório privado (ou cria se não existir)
+2. Copia arquivos do monorepo para o repo privado
+3. Faz commit e push das mudanças
+4. Repositório privado atualizado automaticamente
+
+## ✅ Vantagens desta Estratégia
+
+1. **Fonte Única**: `exspace-extensions` é a fonte de verdade
+2. **Atualização Centralizada**: Atualizar em um lugar, sincronizar para todos
+3. **Instalação Remota**: Repos privados permitem instalação via GitHub URL
+4. **Versionamento**: Cada repo privado mantém seu próprio histórico
+5. **Automação**: Script facilita sincronização
+
+## 📝 Notas
+
+- Repositórios privados são criados automaticamente se não existirem
+- Script usa `GITHUB_TOKEN_EXZOSVERSE_SPACE` do `.env`
+- Sincronização preserva histórico Git dos repos privados
+- Mudanças no monorepo são propagadas para todos os repos privados
 
 ---
 
 **Mantido por**: ExzosVerse-Space  
 **Última atualização**: 2025-12-02
-
