@@ -1,0 +1,85 @@
+{
+  "name": "igniter-js",
+  "displayName": "Igniter.js - Full-Stack TypeScript Framework",
+  "version": "1.0.0",
+  "description": "Integrate Igniter.js framework with Gemini CLI. Build type-safe APIs, manage features, controllers, procedures, and workflows with AI assistance.",
+  "author": "Igniter.js Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/igniter-js"
+  },
+  "homepage": "https://igniterjs.com",
+  "keywords": [
+    "igniter-js",
+    "typescript",
+    "api",
+    "framework",
+    "full-stack",
+    "nextjs",
+    "bun",
+    "hono",
+    "express",
+    "type-safe"
+  ],
+  "mcpServers": {
+    "igniter": {
+      "command": "bunx",
+      "args": [
+        "-y",
+        "@igniter-js/mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "ENABLE_MEMORY_TOOLS": "${ENABLE_MEMORY_TOOLS:-false}",
+        "ENABLE_TASK_MANAGEMENT_TOOLS": "${ENABLE_TASK_MANAGEMENT_TOOLS:-false}",
+        "ENABLE_AGENT_DELEGATION_TOOLS": "${ENABLE_AGENT_DELEGATION_TOOLS:-false}"
+      },
+      "description": "Igniter.js MCP server for type-safe full-stack development"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "enableMemoryTools": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable memory management tools for persistent context"
+      },
+      "enableTaskManagement": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable task management and delegation tools"
+      },
+      "enableAgentDelegation": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable agent delegation capabilities"
+      },
+      "githubToken": {
+        "type": "string",
+        "default": "",
+        "description": "GitHub personal access token for repository operations"
+      }
+    }
+  },
+  "dependencies": {
+    "bun": ">=1.0.0",
+    "node": ">=18.0.0"
+  }
+}
+
