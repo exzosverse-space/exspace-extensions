@@ -1,0 +1,71 @@
+{
+  "name": "nextjs",
+  "displayName": "Next.js - React Framework",
+  "version": "1.0.0",
+  "description": "Integrate Next.js framework with Gemini CLI. Generate pages, components, API routes, and manage Next.js projects with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/nextjs"
+  },
+  "homepage": "https://nextjs.org",
+  "keywords": [
+    "nextjs",
+    "next.js",
+    "react",
+    "framework",
+    "ssr",
+    "ssg",
+    "app-router",
+    "pages-router"
+  ],
+  "mcpServers": {
+    "nextjs": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "nextjs-mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "NEXT_PUBLIC_API_URL": "${NEXT_PUBLIC_API_URL}",
+        "NODE_ENV": "${NODE_ENV:-development}"
+      },
+      "description": "Next.js MCP server for project management and code generation"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "appRouter": {
+        "type": "boolean",
+        "default": true,
+        "description": "Use App Router (true) or Pages Router (false)"
+      },
+      "typescript": {
+        "type": "boolean",
+        "default": true,
+        "description": "Use TypeScript in generated code"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "next": ">=14.0.0"
+  }
+}
+

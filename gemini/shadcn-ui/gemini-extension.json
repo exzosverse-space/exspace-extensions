@@ -1,0 +1,67 @@
+{
+  "name": "shadcn-ui",
+  "displayName": "shadcn/ui - Component Library",
+  "version": "1.0.0",
+  "description": "Integrate shadcn/ui component library with Gemini CLI. Install, manage, and generate shadcn/ui components with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/shadcn-ui"
+  },
+  "homepage": "https://ui.shadcn.com",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "ui",
+    "components",
+    "react",
+    "tailwind",
+    "radix-ui"
+  ],
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "shadcn@latest",
+        "mcp"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "description": "shadcn/ui MCP server for component management"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "registryUrl": {
+        "type": "string",
+        "default": "https://ui.shadcn.com",
+        "description": "shadcn/ui registry URL"
+      },
+      "componentsPath": {
+        "type": "string",
+        "default": "src/components/ui",
+        "description": "Path where components will be installed"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
+

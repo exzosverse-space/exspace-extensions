@@ -1,0 +1,71 @@
+{
+  "name": "vercel",
+  "displayName": "Vercel - Deploy Platform",
+  "version": "1.0.0",
+  "description": "Integrate Vercel platform with Gemini CLI. Deploy projects, manage domains, and monitor deployments with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/vercel"
+  },
+  "homepage": "https://vercel.com",
+  "keywords": [
+    "vercel",
+    "deploy",
+    "hosting",
+    "serverless",
+    "edge",
+    "nextjs",
+    "deployment"
+  ],
+  "mcpServers": {
+    "vercel": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "vercel-mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}",
+        "VERCEL_ORG_ID": "${VERCEL_ORG_ID}",
+        "VERCEL_PROJECT_ID": "${VERCEL_PROJECT_ID}"
+      },
+      "description": "Vercel MCP server for deployment and project management"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "vercelToken": {
+        "type": "string",
+        "default": "",
+        "description": "Vercel API token for authentication"
+      },
+      "autoDeploy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Auto-deploy on changes"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "vercel": ">=30.0.0"
+  }
+}
+

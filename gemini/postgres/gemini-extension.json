@@ -1,0 +1,69 @@
+{
+  "name": "postgres-exspace",
+  "displayName": "PostgreSQL - Custom Tools",
+  "version": "1.0.0",
+  "description": "Custom PostgreSQL tools for Gemini CLI. Extended functionality beyond the official extension with ExzosVerse-specific features.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/postgres"
+  },
+  "homepage": "https://www.postgresql.org",
+  "keywords": [
+    "postgresql",
+    "postgres",
+    "database",
+    "sql",
+    "query",
+    "schema"
+  ],
+  "mcpServers": {
+    "postgres-exspace": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "${POSTGRES_CONNECTION_STRING}"
+      },
+      "description": "PostgreSQL MCP server with custom ExzosVerse tools"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "connectionString": {
+        "type": "string",
+        "default": "",
+        "description": "PostgreSQL connection string"
+      },
+      "schema": {
+        "type": "string",
+        "default": "public",
+        "description": "Default schema to use"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "pg": ">=8.0.0"
+  },
+  "note": "This is a custom extension. For official PostgreSQL support, see: gemini-cli-extensions/postgres"
+}
+

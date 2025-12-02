@@ -1,0 +1,71 @@
+{
+  "name": "prisma",
+  "displayName": "Prisma - Next-Generation ORM",
+  "version": "1.0.0",
+  "description": "Integrate Prisma ORM with Gemini CLI. Manage schemas, generate migrations, and interact with databases using AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/prisma"
+  },
+  "homepage": "https://www.prisma.io",
+  "keywords": [
+    "prisma",
+    "orm",
+    "database",
+    "schema",
+    "migrations",
+    "postgresql",
+    "mysql",
+    "sqlite"
+  ],
+  "mcpServers": {
+    "prisma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@prisma/mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}",
+        "PRISMA_SCHEMA_PATH": "${PRISMA_SCHEMA_PATH:-prisma/schema.prisma}"
+      },
+      "description": "Prisma MCP server for schema management and database operations"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "schemaPath": {
+        "type": "string",
+        "default": "prisma/schema.prisma",
+        "description": "Path to Prisma schema file"
+      },
+      "autoGenerate": {
+        "type": "boolean",
+        "default": true,
+        "description": "Auto-generate Prisma Client after schema changes"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "@prisma/client": ">=5.0.0"
+  }
+}
+

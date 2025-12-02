@@ -1,0 +1,59 @@
+{
+  "name": "bun",
+  "displayName": "Bun - JavaScript Runtime",
+  "version": "1.0.0",
+  "description": "Integrate Bun runtime with Gemini CLI. Execute scripts, manage packages, and build projects with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/bun"
+  },
+  "homepage": "https://bun.sh",
+  "keywords": [
+    "bun",
+    "runtime",
+    "javascript",
+    "typescript",
+    "package-manager",
+    "bundler"
+  ],
+  "mcpServers": {
+    "bun": {
+      "command": "bunx",
+      "args": [
+        "-y",
+        "bun-mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "description": "Bun MCP server for runtime operations and package management"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "bunPath": {
+        "type": "string",
+        "default": "bun",
+        "description": "Path to Bun executable"
+      }
+    }
+  },
+  "dependencies": {
+    "bun": ">=1.0.0"
+  }
+}
+

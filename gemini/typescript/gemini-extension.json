@@ -1,0 +1,68 @@
+{
+  "name": "typescript",
+  "displayName": "TypeScript - Type Safety",
+  "version": "1.0.0",
+  "description": "Integrate TypeScript with Gemini CLI. Analyze types, generate type definitions, and validate TypeScript code with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/typescript"
+  },
+  "homepage": "https://www.typescriptlang.org",
+  "keywords": [
+    "typescript",
+    "types",
+    "type-safety",
+    "ts",
+    "validation",
+    "compiler"
+  ],
+  "mcpServers": {
+    "typescript": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "typescript-mcp-server@latest"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "env": {
+        "TSCONFIG_PATH": "${TSCONFIG_PATH:-tsconfig.json}"
+      },
+      "description": "TypeScript MCP server for type analysis and validation"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "tsconfigPath": {
+        "type": "string",
+        "default": "tsconfig.json",
+        "description": "Path to tsconfig.json"
+      },
+      "strictMode": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable strict type checking"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "typescript": ">=5.0.0"
+  }
+}
+

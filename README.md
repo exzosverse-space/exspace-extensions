@@ -21,8 +21,28 @@ exspace-extensions/
 
 ## 🚀 Stacks Disponíveis
 
-### Gemini CLI
-- [Igniter.js Extension](./gemini/igniter-js/) - Integração do framework Igniter.js com Gemini CLI
+### Gemini CLI (11 extensões)
+
+#### Frameworks & Runtimes
+- [Igniter.js](./gemini/igniter-js/) - Framework full-stack TypeScript
+- [Next.js](./gemini/nextjs/) - Framework React para produção
+- [Bun](./gemini/bun/) - Runtime JavaScript rápido
+- [TypeScript](./gemini/typescript/) - Type safety e análise
+
+#### UI & Components
+- [shadcn/ui](./gemini/shadcn-ui/) - Biblioteca de componentes React
+
+#### Database & ORM
+- [Prisma](./gemini/prisma/) - ORM de próxima geração
+- [PostgreSQL](./gemini/postgres/) - Ferramentas customizadas
+
+#### Testing
+- [Playwright](./gemini/playwright/) - Testes E2E e automação
+
+#### Deployment & Hosting
+- [Vercel](./gemini/vercel/) - Plataforma de deploy
+- [Hostinger](./gemini/hostinger/) - Gerenciamento de VPS
+- [Google Cloud](./gemini/gcloud/) - Ferramentas GCP
 
 ### Cursor IDE
 - Em breve...
@@ -35,12 +55,19 @@ exspace-extensions/
 
 ## 📖 Como Usar
 
-### Instalar Extensão Gemini CLI
+### Instalar Extensões Gemini CLI
 
 ```bash
-# Instalar extensão Igniter.js
+# Instalar extensão específica
+gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/[extension-name] --consent
+
+# Exemplos:
 gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/igniter-js --consent
+gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/shadcn-ui --consent
+gemini extensions install https://github.com/exzosverse-space/exspace-extensions/tree/main/gemini/nextjs --consent
 ```
+
+Veja [gemini/README.md](./gemini/README.md) para lista completa de extensões.
 
 ### Contribuir
 

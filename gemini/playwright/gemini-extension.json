@@ -1,0 +1,68 @@
+{
+  "name": "playwright",
+  "displayName": "Playwright - E2E Testing",
+  "version": "1.0.0",
+  "description": "Integrate Playwright testing framework with Gemini CLI. Generate tests, run E2E tests, and analyze test results with AI assistance.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/playwright"
+  },
+  "homepage": "https://playwright.dev",
+  "keywords": [
+    "playwright",
+    "testing",
+    "e2e",
+    "automation",
+    "browser",
+    "test"
+  ],
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "cwd": ".",
+      "timeout": 60000,
+      "trust": false,
+      "env": {
+        "PLAYWRIGHT_BROWSERS_PATH": "${PLAYWRIGHT_BROWSERS_PATH}"
+      },
+      "description": "Playwright MCP server for E2E testing and browser automation"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "browsers": {
+        "type": "array",
+        "default": ["chromium", "firefox", "webkit"],
+        "description": "Browsers to use for testing"
+      },
+      "headless": {
+        "type": "boolean",
+        "default": true,
+        "description": "Run tests in headless mode"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0",
+    "@playwright/test": ">=1.30.0"
+  }
+}
+

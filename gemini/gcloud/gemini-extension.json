@@ -1,0 +1,64 @@
+{
+  "name": "gcloud-exspace",
+  "displayName": "Google Cloud - Extended Tools",
+  "version": "1.0.0",
+  "description": "Extended Google Cloud tools for Gemini CLI. Documentation and guides for using the official gcloud extension with ExzosVerse workflows.",
+  "author": "ExzosVerse-Space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exzosverse-space/exspace-extensions.git",
+    "directory": "gemini/gcloud"
+  },
+  "homepage": "https://cloud.google.com",
+  "keywords": [
+    "gcloud",
+    "google-cloud",
+    "gcp",
+    "cloud",
+    "infrastructure"
+  ],
+  "mcpServers": {
+    "gcloud": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google-cloud/gcloud-mcp"
+      ],
+      "cwd": ".",
+      "timeout": 30000,
+      "trust": false,
+      "description": "Google Cloud MCP server (official extension wrapper)"
+    }
+  },
+  "contextFiles": [
+    "GEMINI.md",
+    "README.md"
+  ],
+  "excludeTools": [],
+  "activation": {
+    "onInstall": true,
+    "onStartup": false,
+    "events": ["mcpServerReady"]
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "projectId": {
+        "type": "string",
+        "default": "",
+        "description": "Google Cloud project ID"
+      },
+      "region": {
+        "type": "string",
+        "default": "us-central1",
+        "description": "Default GCP region"
+      }
+    }
+  },
+  "dependencies": {
+    "node": ">=18.0.0"
+  },
+  "note": "This extension wraps the official gcloud extension. Install the official extension: gemini extensions install https://github.com/gemini-cli-extensions/gcloud"
+}
+
